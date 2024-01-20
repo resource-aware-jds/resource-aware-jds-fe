@@ -9,6 +9,8 @@ import { RouteLocationRaw } from "vue-router";
 import { LocalConfigProvider } from "@/utils/setting/LocalConfigProvider";
 import JobListVue from "@/views/job/JobList.vue";
 import ExampleViewVue from "@/views/example/ExampleView.vue";
+import JobDetailVue from "@/views/job/JobDetail.vue";
+import TaskDetailVue from "@/views/job/TaskDetail.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -31,6 +33,22 @@ const routes: Array<RouteRecordRaw> = [
     component: JobListVue,
     meta: {
       displayTitle: "page.jobList.displayTitle",
+    },
+  },
+  {
+    path: "/job/detail/:jobID",
+    name: "job-detail",
+    component: JobDetailVue,
+    meta: {
+      displayTitle: "page.jobDetail.displayTitle",
+    },
+  },
+  {
+    path: "/job/detail/:jobID/task/:taskID",
+    name: "task-detail",
+    component: TaskDetailVue,
+    meta: {
+      displayTitle: "page.taskDetail.displayTitle",
     },
   },
   {

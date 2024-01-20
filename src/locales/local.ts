@@ -37,6 +37,12 @@ export interface Localization extends LocaleMessages {
         };
       };
     };
+    jobDetail: {
+      displayTitle: string;
+    };
+    taskDetail: {
+      displayTitle: string;
+    };
   };
   layout: {
     header: {

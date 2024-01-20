@@ -84,6 +84,12 @@ const en: Localization = {
         signingIn: "Signing you in. Please wait.",
       },
     },
+    jobDetail: {
+      displayTitle: "Job Detail",
+    },
+    taskDetail: {
+      displayTitle: "Task Detail",
+    },
   },
   status: {
     jobStatus: {
