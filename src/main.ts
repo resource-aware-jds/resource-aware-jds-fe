@@ -9,7 +9,6 @@ import * as directives from "vuetify/directives";
 import { aliases, mdi } from "vuetify/iconsets/mdi";
 import "@mdi/font/css/materialdesignicons.css";
 import "@/styles/style.css";
-import { VDataTable } from "vuetify/labs/VDataTable";
 import { Layout } from "@/layouts/layout";
 import MainLayout from "@/layouts/main_layout/MainLayout.vue";
 import EventBusFactory, { Event } from "./utils/EventBusFactory";
@@ -28,7 +27,6 @@ import "v-calendar/style.css";
 const i18n = I18nManager.instance.i18n;
 const vuetify = createVuetify({
   components: {
-    VDataTable,
     ...nativeComponent,
   },
   directives,

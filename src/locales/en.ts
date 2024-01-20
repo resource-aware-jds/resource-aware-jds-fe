@@ -90,6 +90,9 @@ const en: Localization = {
     taskDetail: {
       displayTitle: "Task Detail",
     },
+    createJob: {
+      displayTitle: "Create Job",
+    },
   },
   status: {
     jobStatus: {

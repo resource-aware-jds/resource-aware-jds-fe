@@ -43,6 +43,9 @@ export interface Localization extends LocaleMessages {
     taskDetail: {
       displayTitle: string;
     };
+    createJob: {
+      displayTitle: string;
+    };
   };
   layout: {
     header: {

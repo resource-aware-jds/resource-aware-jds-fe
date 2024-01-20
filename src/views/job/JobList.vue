@@ -1,8 +1,9 @@
 <template>
   <div class="h-full w-full grid grid-rows-jobGrid">
     <!-- Searching Area -->
-    <div class="p-3 mx-5 rounded-md">
-      <v-form class="flex flex-row w-full" @submit="search">
+    <div class="p-3 mx-5 rounded-md text-right">
+      <v-btn class="rounded-xl mt-4" prepend-icon="mdi-plus">Create Job</v-btn>
+      <!-- <v-form class="flex flex-row w-full" @submit="search">
         <div class="w-fit min-w-[10%] pt-3">
           <v-select
             clearable
@@ -53,7 +54,7 @@
             t("page.jobList.table.actionBar.searchButton")
           }}</v-btn>
         </div>
-      </v-form>
+      </v-form> -->
     </div>
 
     <!-- Shimmer Table -->
@@ -85,17 +86,17 @@
       @click:row="onClickRow"
     >
       <template v-slot:item="{ item }">
-        <tr class="cursor-pointer" @click="onClickRow(item.raw.name)">
-          <td>{{ item.raw.id }}</td>
-          <td>{{ item.raw.name }}</td>
+        <tr class="cursor-pointer" @click="onClickRow(item.name)">
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
           <td>
             <status-chip
-              :status="item.raw.status"
+              :status="item.status"
               :decorator-composable="useJobStatusDecorator"
             ></status-chip>
           </td>
           <td>
-            <date-time :value="item.raw.updatedAt"></date-time>
+            <date-time :value="item.updatedAt"></date-time>
           </td>
         </tr>
       </template>

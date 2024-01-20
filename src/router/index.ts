@@ -11,6 +11,7 @@ import JobListVue from "@/views/job/JobList.vue";
 import ExampleViewVue from "@/views/example/ExampleView.vue";
 import JobDetailVue from "@/views/job/JobDetail.vue";
 import TaskDetailVue from "@/views/job/TaskDetail.vue";
+import CreateJobVue from "@/views/job/CreateJob.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -49,6 +50,14 @@ const routes: Array<RouteRecordRaw> = [
     component: TaskDetailVue,
     meta: {
       displayTitle: "page.taskDetail.displayTitle",
+    },
+  },
+  {
+    path: "/job/create",
+    name: "create-job",
+    component: CreateJobVue,
+    meta: {
+      displayTitle: "page.createJob.displayTitle",
     },
   },
   {
