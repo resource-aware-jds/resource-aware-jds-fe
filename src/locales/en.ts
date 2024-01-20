@@ -28,6 +28,12 @@ const en: Localization = {
           setting: "Setting",
         },
       },
+      node: {
+        title: "Node",
+        items: {
+          nodeList: "Node List",
+        },
+      },
     },
     accountDetail: {
       signOutButton: "Signout",
@@ -52,11 +58,9 @@ const en: Localization = {
           searchButton: "Search",
         },
         headers: {
-          profilePhoto: "Profile Photo",
-          name: "Name",
-          phoneNumber: "Phone no.",
+          jobName: "Job Name",
           status: "Status",
-          submitDate: "Submit Date",
+          updatedAt: "Updated At",
         },
       },
     },
@@ -80,7 +84,25 @@ const en: Localization = {
       },
     },
   },
-  status: {},
+  status: {
+    jobStatus: {
+      created: "Created",
+      distributing: "Distributing",
+      done: "Done",
+      unknown: "Unknown",
+    },
+    taskStatus: {
+      created: "Created",
+      distributed: "Distributed",
+      done: "Done",
+      unknown: "Unknown",
+    },
+    nodeStatus: {
+      offline: "Offline",
+      online: "Online",
+      unknown: "Unknown",
+    },
+  },
   error: {
     http: {
       statusNotFound: {

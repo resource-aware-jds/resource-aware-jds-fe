@@ -30,11 +30,9 @@ export interface Localization extends LocaleMessages {
           searchButton: string;
         };
         headers: {
-          profilePhoto: string;
-          name: string;
-          phoneNumber: string;
+          jobName: string;
           status: string;
-          submitDate: string;
+          updatedAt: string;
         };
       };
     };
@@ -57,6 +55,12 @@ export interface Localization extends LocaleMessages {
         title: string;
         items: {
           jobList: string;
+        };
+      };
+      node: {
+        title: string;
+        items: {
+          nodeList: string;
         };
       };
       setting: {
@@ -89,6 +93,25 @@ export interface Localization extends LocaleMessages {
         title: string;
         subTitle: string;
       };
+    };
+  };
+  status: {
+    jobStatus: {
+      created: string;
+      distributing: string;
+      done: string;
+      unknown: string;
+    };
+    taskStatus: {
+      created: string;
+      distributed: string;
+      done: string;
+      unknown: string;
+    };
+    nodeStatus: {
+      offline: string;
+      online: string;
+      unknown: string;
     };
   };
 }

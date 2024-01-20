@@ -8,6 +8,7 @@ import { SignoutReason } from "@/models/authentication/authentication";
 import { RouteLocationRaw } from "vue-router";
 import { LocalConfigProvider } from "@/utils/setting/LocalConfigProvider";
 import JobListVue from "@/views/job/JobList.vue";
+import ExampleViewVue from "@/views/example/ExampleView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -30,6 +31,14 @@ const routes: Array<RouteRecordRaw> = [
     component: JobListVue,
     meta: {
       displayTitle: "page.jobList.displayTitle",
+    },
+  },
+  {
+    path: "/example",
+    name: "example",
+    component: ExampleViewVue,
+    meta: {
+      displayTitle: "Exmple",
     },
   },
   {

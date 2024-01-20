@@ -9,29 +9,7 @@
     </thead>
     <tbody>
       <tr v-for="item in Array(10)" :key="item">
-        <td>
-          <div class="py-3">
-            <v-avatar size="55">
-              <Shimmer></Shimmer>
-            </v-avatar>
-          </div>
-        </td>
-        <td>
-          <div class="h-3">
-            <Shimmer class="rounded-xl"></Shimmer>
-          </div>
-        </td>
-        <td>
-          <div class="h-3">
-            <Shimmer class="rounded-xl"></Shimmer>
-          </div>
-        </td>
-        <td>
-          <div class="h-8">
-            <Shimmer class="rounded-xl"></Shimmer>
-          </div>
-        </td>
-        <td>
+        <td v-for="i in 3" :key="i">
           <div class="h-3">
             <Shimmer class="rounded-xl"></Shimmer>
           </div>

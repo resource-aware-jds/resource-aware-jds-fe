@@ -13,11 +13,21 @@ export async function useNavigationItems() {
   const navigationGroup: Array<NavigationGroup> = [
     {
       title: "layout.navigationItem.jobs.title",
-      icon: "mdi-account",
+      icon: "mdi-file-tree",
       items: [
         {
           title: "layout.navigationItem.jobs.items.jobList",
           name: "job-list",
+        },
+      ],
+    },
+    {
+      title: "layout.navigationItem.node.title",
+      icon: "mdi-desktop-classic",
+      items: [
+        {
+          title: "layout.navigationItem.node.items.nodeList",
+          name: "node-list",
         },
       ],
     },

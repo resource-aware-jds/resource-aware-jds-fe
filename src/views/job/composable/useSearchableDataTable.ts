@@ -21,25 +21,17 @@ export function useSearchableDataTable() {
   function getLocaleHeader() {
     return [
       {
-        title: t("page.jobList.table.headers.profilePhoto"),
-        key: "jobImgProfile",
+        title: t("page.jobList.table.headers.jobName"),
+        key: "jobName",
         sortable: false,
       },
       {
-        title: t("page.jobList.table.headers.name"),
-        key: "jobName",
-      },
-      {
-        title: t("page.jobList.table.headers.phoneNumber"),
-        key: "contactInformation.mobileNo",
-      },
-      {
         title: t("page.jobList.table.headers.status"),
-        key: "ctrCmsStatus",
+        key: "status",
       },
       {
-        title: t("page.jobList.table.headers.submitDate"),
-        key: "submitDateInt",
+        title: t("page.jobList.table.headers.updatedAt"),
+        key: "updatedAt",
       },
     ];
   }
