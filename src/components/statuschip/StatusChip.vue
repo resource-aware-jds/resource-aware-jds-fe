@@ -47,8 +47,8 @@ export default defineComponent({
   },
   props: {
     status: {
-      type: Number as PropType<any>,
-      default: -1,
+      type: String as PropType<any>,
+      default: "unknown",
     },
     decoratorComposable: {
       type: Function as PropType<DecoratorComposable>,

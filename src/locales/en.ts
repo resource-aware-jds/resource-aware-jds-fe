@@ -58,6 +58,7 @@ const en: Localization = {
           searchButton: "Search",
         },
         headers: {
+          jobID: "ID",
           jobName: "Job Name",
           status: "Status",
           updatedAt: "Updated At",

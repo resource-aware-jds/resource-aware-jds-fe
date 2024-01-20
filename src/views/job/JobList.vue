@@ -16,11 +16,17 @@
               {{ t("page.jobList.table.actionBar.filterStatus") }}
             </template>
             <template v-slot:selection="{ item }">
-              <status-chip :status="item.value"></status-chip>
+              <status-chip
+                :status="item.value"
+                :decorator-composable="useJobStatusDecorator"
+              ></status-chip>
             </template>
             <template v-slot:item="{ item, props }">
               <v-list-item @click="props.onClick">
-                <status-chip :status="item.value"></status-chip>
+                <status-chip
+                  :status="item.value"
+                  :decorator-composable="useJobStatusDecorator"
+                ></status-chip>
               </v-list-item>
             </template>
           </v-select>
@@ -79,23 +85,17 @@
       @click:row="onClickRow"
     >
       <template v-slot:item="{ item }">
-        <tr class="cursor-pointer" @click="onClickRow(item.raw.ctrUUID)">
+        <tr class="cursor-pointer" @click="onClickRow(item.raw.name)">
+          <td>{{ item.raw.id }}</td>
+          <td>{{ item.raw.name }}</td>
           <td>
-            <div class="py-3">
-              <v-avatar size="55">
-                <image-with-shimmer :src="item.raw.jobImg"></image-with-shimmer>
-              </v-avatar>
-            </div>
-          </td>
-          <td>{{ item.raw.jobName }}</td>
-          <td>
-            {{ item.raw.contactInformation.mobileNo }}
+            <status-chip
+              :status="item.raw.status"
+              :decorator-composable="useJobStatusDecorator"
+            ></status-chip>
           </td>
           <td>
-            <status-chip :status="item.raw.ctrCmsStatus"></status-chip>
-          </td>
-          <td>
-            <date-time :value="item.raw.submitDate"></date-time>
+            <date-time :value="item.raw.updatedAt"></date-time>
           </td>
         </tr>
       </template>
@@ -130,6 +130,8 @@ import DateTime from "@/components/DateTime.vue";
 import router from "@/router";
 import { useLocale } from "vuetify/lib/framework.mjs";
 import EventBusFactory, { Event } from "@/utils/EventBusFactory";
+import StatusChip from "@/components/statuschip/StatusChip.vue";
+import { useJobStatusDecorator } from "@/components/statuschip/useJobStatusDecorator";
 
 export default defineComponent({
   name: "JobList",
@@ -138,17 +140,18 @@ export default defineComponent({
     JobTableShimmer,
     JobTableError,
     DateTime,
+    StatusChip,
   },
   setup() {
     const { tableAttributes, tableData, changePage, search, onLocaleUpdate } =
       useSearchableDataTable();
     const { t } = useLocale();
 
-    function onClickRow(uuid: string) {
+    function onClickRow(jobID: string) {
       router.push({
         name: "job-detail",
         params: {
-          uuid: uuid,
+          jobID: jobID,
         },
       });
     }
@@ -168,6 +171,7 @@ export default defineComponent({
       search,
       onClickRow,
       onLocaleUpdate,
+      useJobStatusDecorator,
     };
   },
   beforeUnmount() {

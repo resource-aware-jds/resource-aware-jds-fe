@@ -2,7 +2,7 @@ import { reactive } from "vue";
 import { debounce } from "@/utils/debounce";
 import RepositoryFactory from "@/repository/repositoryFactory";
 import { I18nManager } from "@/locales/facade";
-import { TimeConfigProvider } from "@/utils/setting/TimeConfigProvider";
+import { Job, JobResponse } from "@/models/job/job";
 
 export interface TableHeader {
   title: string;
@@ -21,8 +21,12 @@ export function useSearchableDataTable() {
   function getLocaleHeader() {
     return [
       {
+        title: t("page.jobList.table.headers.jobID"),
+        key: "id",
+      },
+      {
         title: t("page.jobList.table.headers.jobName"),
-        key: "jobName",
+        key: "name",
         sortable: false,
       },
       {
@@ -38,7 +42,7 @@ export function useSearchableDataTable() {
 
   const tableData = reactive({
     header: getLocaleHeader(),
-    items: <Array<any>>[],
+    items: <Array<Job>>[],
   });
   const tableAttributes = reactive({
     error: {
@@ -169,20 +173,13 @@ export function useSearchableDataTable() {
       searchAttribute.ctrCmsStatus = tableAttributes.filters.filterModel;
     }
 
-    let response: any;
+    let response: JobResponse;
     try {
       response = await RepositoryFactory.instance.jobRepository.getJob();
     } catch (e) {
       tableAttributes.error.errorInstance = e;
       setErrorState();
       return;
-    }
-
-    // Parse the submitDate into integer
-    for (let i = 0; i < response.data.length; i++) {
-      response.data[i].submitDateInt = TimeConfigProvider.instance.getTimestamp(
-        response.data[i].submitDate ?? "0"
-      );
     }
 
     // Set the response value back

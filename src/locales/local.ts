@@ -30,6 +30,7 @@ export interface Localization extends LocaleMessages {
           searchButton: string;
         };
         headers: {
+          jobID: string;
           jobName: string;
           status: string;
           updatedAt: string;
