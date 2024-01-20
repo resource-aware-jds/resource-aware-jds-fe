@@ -1,4 +1,4 @@
-# global-admin-portal
+# rajds-admin-portal
 
 This project use Vue.JS 3 with Vite.
 
