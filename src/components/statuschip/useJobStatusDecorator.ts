@@ -39,14 +39,14 @@ export function useJobStatusDecorator() {
       case JobStatus.Unknown:
       default:
         return {
-          title: translation("status.jobStatus.unknown"),
+          title: status,
           color: "grey",
           icon: "mdi-help",
         };
     }
   }
 
-  function updateStatusValue(status?: number) {
+  function updateStatusValue(status?: string) {
     const result = getJobStatusDecoratorDetail(status as JobStatus);
     icon.value = result.icon;
     title.value = result.title;

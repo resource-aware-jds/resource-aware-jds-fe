@@ -124,7 +124,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useSearchableDataTable } from "./composable/useSearchableDataTable";
-import ImageWithShimmer from "@/components/shimmer/ImageWithShimmer.vue";
 import JobTableShimmer from "./components/JobTableShimmer.vue";
 import JobTableError from "./components/JobTableError.vue";
 import DateTime from "@/components/DateTime.vue";
@@ -137,7 +136,6 @@ import { useJobStatusDecorator } from "@/components/statuschip/useJobStatusDecor
 export default defineComponent({
   name: "JobList",
   components: {
-    ImageWithShimmer,
     JobTableShimmer,
     JobTableError,
     DateTime,

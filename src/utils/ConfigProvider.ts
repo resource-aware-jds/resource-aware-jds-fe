@@ -28,7 +28,7 @@ class ConfigProvider {
     const appConfig: AppConfig = {
       VITE_APP_TITLE: import.meta.env.VITE_APP_TITLE ?? "RAJDS Admin Portal",
       VITE_ENV: import.meta.env.VITE_ENV ?? Env.LOCAL,
-      VITE_API_HOST: import.meta.env.VITE_API_HOST ?? "http://localhost:31239",
+      VITE_API_HOST: import.meta.env.VITE_API_HOST ?? "http://localhost:31313",
     };
 
     return appConfig;
