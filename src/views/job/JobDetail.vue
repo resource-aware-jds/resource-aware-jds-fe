@@ -4,8 +4,12 @@
       <v-card-item>
         <v-card-title> Job Detail for: {{ attribute.data.id }} </v-card-title>
         <v-card-subtitle>
+          <h2>Name: {{ attribute.data.name }}</h2>
+          <h2>
+            Image URl:
+            {{ attribute.data.imageURL }}
+          </h2>
           Status:
-
           <StatusChip
             status="created"
             :decorator-composable="useJobStatusDecorator"
