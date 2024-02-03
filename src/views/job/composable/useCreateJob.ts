@@ -1,3 +1,4 @@
+import { TaskCreationModel } from "@/models/task/task";
 import { reactive } from "vue";
 
 export function useCreateJob() {
@@ -14,6 +15,8 @@ export function useCreateJob() {
     name: "",
     imageURL: "",
     file: [] as Array<File>,
+    fileData: [] as Array<TaskCreationModel>,
+    fileValid: false,
   });
 
   async function loadFileAndConvertToJson(data: File): Promise<object> {
@@ -28,13 +31,32 @@ export function useCreateJob() {
   }
 
   async function onClickSubmit(e: any) {
+    if (!attribute.valid || !attribute.fileValid) {
+      console.log("Validation Failed");
+      return;
+    }
     console.log(attribute.valid);
     console.log(e);
     console.log("Here1");
   }
 
+  async function onFileUpdate(fileData: any) {
+    const fileDataParsed = await loadFileAndConvertToJson(fileData[0]);
+    if (!Array.isArray(fileDataParsed)) {
+      console.log("File is invalid, not array");
+      return;
+    }
+
+    const fileDataParsedCaseToModel =
+      fileDataParsed as Array<TaskCreationModel>;
+
+    attribute.fileData = fileDataParsedCaseToModel;
+    attribute.fileValid = true;
+  }
+
   return {
     attribute,
     onClickSubmit,
+    onFileUpdate,
   };
 }

@@ -35,10 +35,12 @@
           accept="application/json"
           :rules="[requiredFileRule('File Input')]"
           v-model="attribute.file"
+          @update:model-value="onFileUpdate"
         >
         </v-file-input>
-        <h1 class="mb-3">
-          Total Task to be created: <b class="text-blue">30</b>
+        <h1 class="mb-3" v-if="attribute.fileValid">
+          Total Task to be created:
+          <b class="text-blue">{{ attribute.fileData.length }}</b>
         </h1>
       </v-card>
       <v-divider></v-divider>
@@ -57,7 +59,7 @@ import { useCreateJob } from "./composable/useCreateJob";
 export default defineComponent({
   name: "CreateJob",
   setup() {
-    const { attribute, onClickSubmit } = useCreateJob();
+    const { attribute, onClickSubmit, onFileUpdate } = useCreateJob();
 
     function requiredRule(fieldName: string) {
       return (value: any) => {
@@ -101,6 +103,7 @@ export default defineComponent({
       requiredRule,
       urlRule,
       requiredFileRule,
+      onFileUpdate,
     };
   },
 });
