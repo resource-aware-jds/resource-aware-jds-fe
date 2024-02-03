@@ -1,4 +1,6 @@
 import { TaskCreationModel } from "@/models/task/task";
+import RepositoryFactory from "@/repository/repositoryFactory";
+import router from "@/router";
 import { reactive } from "vue";
 
 export function useCreateJob() {
@@ -35,9 +37,19 @@ export function useCreateJob() {
       console.log("Validation Failed");
       return;
     }
-    console.log(attribute.valid);
-    console.log(e);
-    console.log("Here1");
+
+    const response = await RepositoryFactory.instance.jobRepository.createJob({
+      name: attribute.name,
+      imageURL: attribute.imageURL,
+      taskAttributes: attribute.fileData,
+    });
+
+    router.replace({
+      name: "job-detail",
+      params: {
+        jobID: response.id,
+      },
+    });
   }
 
   async function onFileUpdate(fileData: any) {

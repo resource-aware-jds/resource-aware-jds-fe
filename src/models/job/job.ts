@@ -18,3 +18,16 @@ export interface JobResponse {
   total: number;
   offset: number;
 }
+
+export interface DataResponse<T> {
+  data: T;
+}
+
+export interface CreateJobResponse {
+  id: string;
+  name: string;
+  status: string;
+  imageURL: string;
+  createdAt: string;
+  updatedAt: string;
+}
