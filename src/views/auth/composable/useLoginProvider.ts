@@ -16,6 +16,7 @@ export function useLoginProvider() {
     attributes.error.instance = null;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function setError(e: any) {
     attributes.error.isError = true;
     attributes.error.instance = e;
@@ -42,6 +43,7 @@ export function useLoginProvider() {
     attributes.isLoading = false;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async function loginWithEmailAndPassword(email: string, password: string) {
     clearError();
     attributes.isLoading = true;

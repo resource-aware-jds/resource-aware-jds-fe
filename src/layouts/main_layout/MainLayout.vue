@@ -16,26 +16,6 @@
         </div>
       </v-app-bar-title>
       <v-spacer></v-spacer>
-
-      <!-- <v-menu
-        location="bottom"
-        content-class="rounded-xl"
-        :close-on-content-click="false"
-      >
-        <template v-slot:activator="{ props }">
-          <v-btn v-bind="props" icon>
-            <v-avatar>
-              <image-with-shimmer
-                v-if="!userProfileAttribute.isLoading"
-                :src="userProfileAttribute.profile.profileImage"
-                fallback-icon="mdi-account"
-              ></image-with-shimmer>
-              <shimmer v-else></shimmer>
-            </v-avatar>
-          </v-btn>
-        </template>
-        <account-detail :on-click-signout="onClickSignout"></account-detail>
-      </v-menu> -->
     </v-app-bar>
 
     <v-main>
@@ -104,11 +84,8 @@
 import router from "@/router";
 import { defineComponent, ref } from "vue";
 import { Layout } from "@/layouts/layout";
-import ImageWithShimmer from "@/components/shimmer/ImageWithShimmer.vue";
 import CustomizedBreadCrumbs from "./components/CustomizedBreadCrumbs.vue";
 import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
-import Shimmer from "@/components/shimmer/Shimmer.vue";
-import AccountDetail from "./components/AccountDetail.vue";
 import { useUserProfile } from "./composable/useUserProfile";
 import Dialogbox from "@/components/dialogbox/Dialogbox.vue";
 import { useDialogBox } from "@/components/dialogbox/composable/useDialogBox";
@@ -124,10 +101,7 @@ import { onMounted } from "vue";
 export default defineComponent({
   name: Layout.MainLayout,
   components: {
-    ImageWithShimmer,
     CustomizedBreadCrumbs,
-    Shimmer,
-    AccountDetail,
     Dialogbox,
     LanguageSwitcher,
   },

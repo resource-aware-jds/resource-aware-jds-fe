@@ -32,7 +32,7 @@ export function useCreateJob() {
     return JSON.parse(result);
   }
 
-  async function onClickSubmit(e: any) {
+  async function onClickSubmit() {
     if (!attribute.valid || !attribute.fileValid) {
       console.log("Validation Failed");
       return;

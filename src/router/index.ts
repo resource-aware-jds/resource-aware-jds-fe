@@ -88,10 +88,10 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach(async (to) => {
+router.beforeEach(async () => {
   // routes with `meta: { requiresAuth: true }` will check for the users, others won't
-  if (to.meta.requiresAuth ?? true) {
-  }
+  // if (to.meta.requiresAuth ?? true) {
+  // }
 });
 
 router.afterEach(async () => {
@@ -101,8 +101,6 @@ router.afterEach(async () => {
 
 export class RouterObserver {
   private static _instance: RouterObserver;
-
-  private constructor() {}
 
   public static get instance(): RouterObserver {
     if (!RouterObserver._instance) {

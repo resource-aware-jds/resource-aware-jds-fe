@@ -14,7 +14,6 @@ import MainLayout from "@/layouts/main_layout/MainLayout.vue";
 import EventBusFactory, { Event } from "./utils/EventBusFactory";
 import SecretProvider from "./utils/SecretProvider";
 import StartupUtil from "./utils/startup/StartupUtil";
-import { ConfigProvider } from "./utils/ConfigProvider";
 import NonLayout from "@/layouts/non_layout/NonLayout.vue";
 import { useI18n } from "vue-i18n";
 import { createVueI18nAdapter } from "vuetify/locale/adapters/vue-i18n";

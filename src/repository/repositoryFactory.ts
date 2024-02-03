@@ -3,7 +3,6 @@ import JobRepository from "./job";
 import Repository from "./repository";
 import EventBusFactory, { Event } from "@/utils/EventBusFactory";
 import { SignoutReason } from "@/models/authentication/authentication";
-import { LocalConfigProvider } from "@/utils/setting/LocalConfigProvider";
 import SecretProvider from "@/utils/SecretProvider";
 import { ConfigProvider } from "@/utils/ConfigProvider";
 
@@ -14,10 +13,7 @@ class RepositoryFactory {
   private _axiosInstance: Axios;
 
   private constructor() {
-    this._axiosInstance = this.generateAxiosInstance(
-      null,
-      LocalConfigProvider.instance.getConfig()
-    );
+    this._axiosInstance = this.generateAxiosInstance(null);
     this._repositories = [];
   }
 
@@ -31,10 +27,7 @@ class RepositoryFactory {
 
   public updateAccessToken(accessToken: string) {
     // Create new Axios Instance
-    this._axiosInstance = this.generateAxiosInstance(
-      accessToken,
-      LocalConfigProvider.instance.getConfig()
-    );
+    this._axiosInstance = this.generateAxiosInstance(accessToken);
 
     this._repositories.forEach((repository) => {
       repository.setAxiosInstance(this._axiosInstance);
@@ -44,8 +37,7 @@ class RepositoryFactory {
   public onUpdateLocale() {
     RepositoryFactory._instance._axiosInstance =
       RepositoryFactory._instance.generateAxiosInstance(
-        SecretProvider.instance.getAccessToken(),
-        LocalConfigProvider.instance.getConfig()
+        SecretProvider.instance.getAccessToken()
       );
 
     RepositoryFactory._instance._repositories.forEach((repository) => {
@@ -53,10 +45,7 @@ class RepositoryFactory {
     });
   }
 
-  private generateAxiosInstance(
-    authorization: string | null,
-    language: string | null
-  ): Axios {
+  private generateAxiosInstance(authorization: string | null): Axios {
     const headers: Partial<RawAxiosRequestHeaders> = {};
 
     if (authorization) {

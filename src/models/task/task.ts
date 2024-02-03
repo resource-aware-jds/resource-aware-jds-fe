@@ -6,5 +6,5 @@ export enum TaskStatus {
 }
 
 export interface TaskCreationModel {
-  attribute: Object;
+  attribute: any;
 }
