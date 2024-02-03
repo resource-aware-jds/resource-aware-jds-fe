@@ -46,6 +46,7 @@ export interface TaskDetailResponse {
   id: string;
   status: string;
   taskAttributes: any;
+  latestDistributedNodeID: string;
   logs: Array<TaskLogResponse>;
 }
 
