@@ -46,7 +46,7 @@ export function useTaskStatusDecorator() {
     }
   }
 
-  function updateStatusValue(status?: number) {
+  function updateStatusValue(status?: string) {
     const result = getTaskStatusDecoratorDetail(status as TaskStatus);
     icon.value = result.icon;
     title.value = result.title;

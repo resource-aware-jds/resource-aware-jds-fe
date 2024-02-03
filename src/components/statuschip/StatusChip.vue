@@ -12,7 +12,7 @@ export type DecoratorComposable = () => {
   icon: Ref<string>;
   color: Ref<string>;
   title: Ref<string>;
-  updateStatusValue: (status: number) => void;
+  updateStatusValue: (status: string) => void;
 };
 
 export default defineComponent({
