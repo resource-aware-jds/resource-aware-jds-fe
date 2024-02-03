@@ -1,5 +1,10 @@
 import Repository from "./repository";
-import { CreateJobResponse, DataResponse, JobResponse } from "@/models/job/job";
+import {
+  CreateJobResponse,
+  DataResponse,
+  JobDetailResponse,
+  JobResponse,
+} from "@/models/job/job";
 import { AxiosResponse } from "axios";
 class JobRepository extends Repository {
   async getJob(): Promise<JobResponse> {
@@ -28,6 +33,15 @@ class JobRepository extends Repository {
       });
 
     return response.data.data;
+  }
+
+  async getJobDetail(id: string): Promise<JobDetailResponse> {
+    const response: AxiosResponse<JobDetailResponse> = await this.sendRequest({
+      method: "GET",
+      url: `/job/${id}/detail`,
+    });
+
+    return response.data;
   }
 }
 

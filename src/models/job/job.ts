@@ -31,3 +31,27 @@ export interface CreateJobResponse {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface JobDetailResponse {
+  id: string;
+  status: string;
+  name: string;
+  imageURL: string;
+  createdAt: string;
+  updatedAt: string;
+  tasks: Array<TaskDetailResponse>;
+}
+
+export interface TaskDetailResponse {
+  id: string;
+  status: string;
+  taskAttributes: any;
+  logs: Array<TaskLogResponse>;
+}
+
+export interface TaskLogResponse {
+  severity: string;
+  message: string;
+  parameters: any;
+  timestamp: string;
+}
