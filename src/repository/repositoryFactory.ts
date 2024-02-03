@@ -5,11 +5,13 @@ import EventBusFactory, { Event } from "@/utils/EventBusFactory";
 import { SignoutReason } from "@/models/authentication/authentication";
 import SecretProvider from "@/utils/SecretProvider";
 import { ConfigProvider } from "@/utils/ConfigProvider";
+import TaskRepository from "./task";
 
 class RepositoryFactory {
   private static _instance: RepositoryFactory;
   private _repositories: Array<Repository>;
   private _jobRepository?: JobRepository;
+  private _taskRepository?: TaskRepository;
   private _axiosInstance: Axios;
 
   private constructor() {
@@ -23,6 +25,14 @@ class RepositoryFactory {
       this._repositories.push(this._jobRepository);
     }
     return this._jobRepository;
+  }
+
+  public get taskRepository(): TaskRepository {
+    if (!this._taskRepository) {
+      this._taskRepository = new TaskRepository(this._axiosInstance);
+      this._repositories.push(this._taskRepository);
+    }
+    return this._taskRepository;
   }
 
   public updateAccessToken(accessToken: string) {

@@ -44,6 +44,8 @@ export interface JobDetailResponse {
 
 export interface TaskDetailResponse {
   id: string;
+  jobID: string;
+  imageURL: string;
   status: string;
   taskAttributes: any;
   latestDistributedNodeID: string;

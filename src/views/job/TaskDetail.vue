@@ -2,26 +2,31 @@
   <div>
     <v-card class="mx-3 my-4 rounded-xl text-left" elevation="20">
       <v-card-item>
-        <v-card-title> Job Detail for: 1231214124 </v-card-title>
+        <v-card-title> Task Detail for : {{ attribute.data.id }} </v-card-title>
         <v-card-subtitle>
+          <h2 v-if="attribute.data.latestDistributedNodeID">
+            Latest Distributed Node ID:
+            {{ attribute.data.latestDistributedNodeID }}
+          </h2>
+
+          <h2>
+            Job ID:
+            {{ attribute.data.jobID }}
+          </h2>
+          <h2>
+            Image URL:
+            {{ attribute.data.imageURL }}
+          </h2>
+          <h2>
+            Task Attributes:
+            {{
+              attribute.data.taskAttributes ??
+              "Task Attributes not support for displaying in frontend"
+            }}
+          </h2>
           Status:
-
           <StatusChip
-            status="created"
-            :decorator-composable="useJobStatusDecorator"
-          ></StatusChip>
-        </v-card-subtitle>
-      </v-card-item>
-    </v-card>
-
-    <v-card class="mx-3 my-4 rounded-xl text-left" elevation="20">
-      <v-card-item>
-        <v-card-title> Task Detail for : 1231214124 </v-card-title>
-        <v-card-subtitle>
-          Status:
-
-          <StatusChip
-            status="distributed"
+            :status="attribute.data.status"
             :decorator-composable="useTaskStatusDecorator"
           ></StatusChip>
         </v-card-subtitle>
@@ -30,12 +35,11 @@
 
     <v-card class="mx-3 my-4 rounded-xl text-left" elevation="7">
       <v-card-item>
-        <v-card-title> Task Log </v-card-title>
+        <v-card-title> Task Distribution Log </v-card-title>
       </v-card-item>
       <v-table fixed-header height="750px">
         <thead>
           <tr>
-            <th class="text-left">Type</th>
             <th class="text-left">Severity</th>
             <th class="text-left">Parameters</th>
             <th class="text-left">Message</th>
@@ -43,12 +47,36 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in 100" :key="item">
-            <td>Distribution Log</td>
-            <td>INFO</td>
-            <td>{"nodeID": "abcd"}</td>
-            <td>Successfully Distributed to node</td>
-            <td>1212412412</td>
+          <tr v-for="(item, index) in attribute.data.logs" :key="index">
+            <td>
+              <div v-if="item.severity === 'info'" class="flex-row-1">
+                <v-tooltip text="Info" location="start">
+                  <template v-slot:activator="{ props }">
+                    <v-icon
+                      icon="mdi-information"
+                      color="blue"
+                      v-bind="props"
+                    ></v-icon>
+                  </template>
+                </v-tooltip>
+              </div>
+              <div v-if="item.severity === 'warn'" class="flex-row-1">
+                <v-tooltip text="Warn" location="start">
+                  <template v-slot:activator="{ props }">
+                    <v-icon
+                      icon="mdi-alert"
+                      color="yellow"
+                      v-bind="props"
+                    ></v-icon>
+                  </template>
+                </v-tooltip>
+              </div>
+            </td>
+            <td>{{ item.parameters }}</td>
+            <td>{{ item.message }}</td>
+            <td>
+              <DateTime :value="item.timestamp"></DateTime>
+            </td>
           </tr>
         </tbody>
       </v-table>
@@ -61,14 +89,22 @@ import { defineComponent } from "vue";
 import StatusChip from "@/components/statuschip/StatusChip.vue";
 import { useJobStatusDecorator } from "@/components/statuschip/useJobStatusDecorator";
 import { useTaskStatusDecorator } from "@/components/statuschip/useTaskStatusDecorator";
+import { useGetTaskDetail } from "./composable/useGetTaskDetail";
+import { useRoute } from "vue-router";
+import DateTime from "@/components/DateTime.vue";
 
 export default defineComponent({
   name: "TaskDetailView",
   components: {
     StatusChip,
+    DateTime,
   },
   setup() {
+    const route = useRoute();
+    const { attribute } = useGetTaskDetail(route.params.taskID as string);
+
     return {
+      attribute,
       useJobStatusDecorator,
       useTaskStatusDecorator,
     };

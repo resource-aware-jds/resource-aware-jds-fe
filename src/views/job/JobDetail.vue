@@ -28,7 +28,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in attribute.data.tasks" :key="item.id">
+          <tr
+            v-for="item in attribute.data.tasks"
+            :key="item.id"
+            @click="onClickEachRow(item.id)"
+          >
             <td>{{ item.id }}</td>
             <td>
               <StatusChip
@@ -54,6 +58,7 @@ import { useJobStatusDecorator } from "@/components/statuschip/useJobStatusDecor
 import { useTaskStatusDecorator } from "@/components/statuschip/useTaskStatusDecorator";
 import { useGetJobDetail } from "./composable/useGetJobDetail";
 import { useRoute } from "vue-router";
+import router from "@/router";
 
 export default defineComponent({
   name: "JobDetailView",
@@ -65,10 +70,21 @@ export default defineComponent({
 
     const { attribute } = useGetJobDetail(route.params.jobID as string);
 
+    function onClickEachRow(taskID: string) {
+      router.push({
+        name: "task-detail",
+        params: {
+          jobID: route.params.jobID,
+          taskID: taskID,
+        },
+      });
+    }
+
     return {
       attribute,
       useJobStatusDecorator,
       useTaskStatusDecorator,
+      onClickEachRow,
     };
   },
 });
