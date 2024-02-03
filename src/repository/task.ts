@@ -1,11 +1,5 @@
 import Repository from "./repository";
-import {
-  CreateJobResponse,
-  DataResponse,
-  JobDetailResponse,
-  JobResponse,
-  TaskDetailResponse,
-} from "@/models/job/job";
+import { TaskDetailResponse } from "@/models/job/job";
 import { AxiosResponse } from "axios";
 
 class TaskRepository extends Repository {
