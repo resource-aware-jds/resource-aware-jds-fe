@@ -5,11 +5,14 @@ import { reactive } from "vue";
 export function useGetTaskDetail(taskID: string) {
   const attribute = reactive({
     data: {} as TaskDetailResponse,
+    taskAttribute: "" as string,
   });
 
   async function getTaskDetail() {
     const response =
       await RepositoryFactory.instance.taskRepository.getTaskDetail(taskID);
+
+    attribute.taskAttribute = JSON.stringify(response.taskAttributes);
 
     attribute.data = response;
   }

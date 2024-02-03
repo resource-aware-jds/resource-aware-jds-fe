@@ -17,18 +17,18 @@
             Image URL:
             {{ attribute.data.imageURL }}
           </h2>
-          <h2>
-            Task Attributes:
-            {{
-              attribute.data.taskAttributes ??
-              "Task Attributes not support for displaying in frontend"
-            }}
-          </h2>
           Status:
           <StatusChip
             :status="attribute.data.status"
             :decorator-composable="useTaskStatusDecorator"
           ></StatusChip>
+
+          <v-textarea
+            label="Task Attributes"
+            v-model:model-value="attribute.taskAttribute"
+            disabled
+          >
+          </v-textarea>
         </v-card-subtitle>
       </v-card-item>
     </v-card>
