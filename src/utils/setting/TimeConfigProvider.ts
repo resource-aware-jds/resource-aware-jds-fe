@@ -50,7 +50,8 @@ class TimeConfigProvider {
     inputDateTime: string,
     format: string
   ): string {
-    return moment(inputDateTime).format(format);
+    const localTimeZone = moment.tz.guess();
+    return moment(inputDateTime).tz(localTimeZone).format(format);
   }
 
   public getTimestamp(inputDateTime: string) {

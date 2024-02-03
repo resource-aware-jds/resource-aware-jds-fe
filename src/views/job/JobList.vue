@@ -2,7 +2,7 @@
   <div class="h-full w-full grid grid-rows-jobGrid">
     <!-- Searching Area -->
     <div class="p-3 mx-5 rounded-md text-right">
-      <v-btn class="rounded-xl mt-4" prepend-icon="mdi-plus">Create Job</v-btn>
+      <v-btn class="rounded-xl mt-4" prepend-icon="mdi-plus" @click="onClickCreateJob">Create Job</v-btn>
       <!-- <v-form class="flex flex-row w-full" @submit="search">
         <div class="w-fit min-w-[10%] pt-3">
           <v-select
@@ -86,7 +86,7 @@
       @click:row="onClickRow"
     >
       <template v-slot:item="{ item }">
-        <tr class="cursor-pointer" @click="onClickRow(item.name)">
+        <tr class="cursor-pointer" @click="onClickRow(item.id)">
           <td>{{ item.id }}</td>
           <td>{{ item.name }}</td>
           <td>
@@ -155,6 +155,12 @@ export default defineComponent({
       });
     }
 
+    function onClickCreateJob() {
+      router.push({
+        name: "create-job",
+      });
+    }
+
     EventBusFactory.instance.eventBus.on(
       Event.LocaleConfigUpdate,
       onLocaleUpdate
@@ -171,6 +177,7 @@ export default defineComponent({
       onClickRow,
       onLocaleUpdate,
       useJobStatusDecorator,
+      onClickCreateJob,
     };
   },
   beforeUnmount() {
