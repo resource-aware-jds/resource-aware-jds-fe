@@ -2,7 +2,12 @@
   <div class="h-full w-full grid grid-rows-jobGrid">
     <!-- Searching Area -->
     <div class="p-3 mx-5 rounded-md text-right">
-      <v-btn class="rounded-xl mt-4" prepend-icon="mdi-plus" @click="onClickCreateJob">Create Job</v-btn>
+      <v-btn
+        class="rounded-xl mt-4"
+        prepend-icon="mdi-plus"
+        @click="onClickCreateJob"
+        >Create Job</v-btn
+      >
       <!-- <v-form class="flex flex-row w-full" @submit="search">
         <div class="w-fit min-w-[10%] pt-3">
           <v-select

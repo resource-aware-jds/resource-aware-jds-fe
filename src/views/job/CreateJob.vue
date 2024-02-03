@@ -105,9 +105,7 @@ export default defineComponent({
       return JSON.parse(result);
     }
 
-    async function onClickSubmit() {
-
-    }
+    async function onClickSubmit() {}
 
     return {
       attribute,
