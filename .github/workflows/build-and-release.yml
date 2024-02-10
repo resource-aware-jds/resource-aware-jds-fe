@@ -30,7 +30,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ format('ghcr.io/resource-aware-jds/resource-aware-jds:{0}', github.ref_name) }},ghcr.io/resource-aware-jds/resource-aware-jds:latest
+          tags: ${{ format('ghcr.io/resource-aware-jds/resource-aware-jds-fe:{0}', github.ref_name) }},ghcr.io/resource-aware-jds/resource-aware-jds-fe:latest
           github-token: ${{ secrets.GITHUB_TOKEN }}
           platforms: |
             linux/amd64
