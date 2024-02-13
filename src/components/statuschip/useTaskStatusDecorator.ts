@@ -30,11 +30,17 @@ export function useTaskStatusDecorator() {
           color: "blue",
           icon: "mdi-file-tree",
         };
-      case TaskStatus.Done:
+      case TaskStatus.Success:
         return {
-          title: translation("status.taskStatus.done"),
+          title: "Success",
           color: "green",
           icon: "mdi-check-circle",
+        };
+      case TaskStatus.WorkOnTaskFailure:
+        return {
+          title: "Work On Task Failure",
+          color: "red",
+          icon: "mdi-alert-decagram",
         };
       case TaskStatus.Unknown:
       default:

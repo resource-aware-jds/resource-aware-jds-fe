@@ -26,9 +26,9 @@
           Upload the file that contain the task attribute in format of JSON in
           form of array of task attribute
         </h2>
-        <a href="https://google.com" class="text-blue"
+        <!-- <a href="https://google.com" class="text-blue"
           >Download an example file</a
-        >
+        > -->
         <v-file-input
           class="ht-3"
           label="File input"

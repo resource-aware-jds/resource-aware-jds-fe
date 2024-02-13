@@ -60,6 +60,17 @@
                   </template>
                 </v-tooltip>
               </div>
+              <div v-if="item.severity === 'error'" class="flex-row-1">
+                <v-tooltip text="Error" location="start">
+                  <template v-slot:activator="{ props }">
+                    <v-icon
+                      icon="mdi-alert-decagram"
+                      color="red"
+                      v-bind="props"
+                    ></v-icon>
+                  </template>
+                </v-tooltip>
+              </div>
               <div v-if="item.severity === 'warn'" class="flex-row-1">
                 <v-tooltip text="Warn" location="start">
                   <template v-slot:activator="{ props }">

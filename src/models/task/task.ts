@@ -1,7 +1,8 @@
 export enum TaskStatus {
   Created = "created",
   Distributed = "distributed",
-  Done = "done",
+  Success = "success",
+  WorkOnTaskFailure = "work-on-task-failure",
   Unknown = "unknown",
 }
 

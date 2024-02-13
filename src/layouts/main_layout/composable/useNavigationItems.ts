@@ -21,16 +21,16 @@ export async function useNavigationItems() {
         },
       ],
     },
-    {
-      title: "layout.navigationItem.node.title",
-      icon: "mdi-desktop-classic",
-      items: [
-        {
-          title: "layout.navigationItem.node.items.nodeList",
-          name: "node-list",
-        },
-      ],
-    },
+    // {
+    //   title: "layout.navigationItem.node.title",
+    //   icon: "mdi-desktop-classic",
+    //   items: [
+    //     {
+    //       title: "layout.navigationItem.node.items.nodeList",
+    //       name: "node-list",
+    //     },
+    //   ],
+    // },
   ];
 
   return navigationGroup;
