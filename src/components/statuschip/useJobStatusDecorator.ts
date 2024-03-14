@@ -24,6 +24,12 @@ export function useJobStatusDecorator() {
           color: "teal",
           icon: "mdi-folder-plus",
         };
+      case JobStatus.Experimenting:
+        return {
+          title: "Experimenting",
+          color: "purple-darken-2",
+          icon: "mdi-flask",
+        };
       case JobStatus.Distributing:
         return {
           title: translation("status.jobStatus.distributing"),

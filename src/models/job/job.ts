@@ -1,5 +1,6 @@
 export enum JobStatus {
   Created = "created",
+  Experimenting = "experimenting",
   Distributing = "distributing",
   Done = "done",
   Unknown = "unknown",

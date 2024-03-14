@@ -24,6 +24,12 @@ export function useTaskStatusDecorator() {
           color: "teal",
           icon: "mdi-folder-plus",
         };
+      case TaskStatus.ReadyToDistribute:
+        return {
+          title: "Ready To Distribute",
+          color: "teal",
+          icon: "mdi-folder-plus",
+        };
       case TaskStatus.Distributed:
         return {
           title: translation("status.taskStatus.distributed"),
