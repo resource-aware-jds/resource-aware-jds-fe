@@ -11,7 +11,7 @@
           </h2>
           Status:
           <StatusChip
-            status="created"
+            :status="attribute.data.status"
             :decorator-composable="useJobStatusDecorator"
           ></StatusChip>
         </v-card-subtitle>
