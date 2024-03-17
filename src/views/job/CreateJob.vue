@@ -19,6 +19,20 @@
           v-model="attribute.imageURL"
           required
         ></v-text-field>
+
+        <v-select
+          label="Distribution Logic"
+          :items="['round_robin', 'resource_aware']"
+          v-model:model-value="attribute.distributionLogic"
+          v-on:update:model-value="onDistributionLogicUpdate"
+        ></v-select>
+
+        <v-switch
+          label="Is Experiment"
+          v-model:model-value="attribute.isExperiment"
+          disabled
+        >
+        </v-switch>
       </v-card>
       <v-divider></v-divider>
       <v-card class="text-left" title="Task Creation" flat>
@@ -59,7 +73,12 @@ import { useCreateJob } from "./composable/useCreateJob";
 export default defineComponent({
   name: "CreateJob",
   setup() {
-    const { attribute, onClickSubmit, onFileUpdate } = useCreateJob();
+    const {
+      attribute,
+      onClickSubmit,
+      onFileUpdate,
+      onDistributionLogicUpdate,
+    } = useCreateJob();
 
     function requiredRule(fieldName: string) {
       return (value: any) => {
@@ -105,6 +124,7 @@ export default defineComponent({
       urlRule,
       requiredFileRule,
       onFileUpdate,
+      onDistributionLogicUpdate,
     };
   },
 });

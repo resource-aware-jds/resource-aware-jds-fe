@@ -19,6 +19,8 @@ export function useCreateJob() {
     file: [] as Array<File>,
     fileData: [] as Array<TaskCreationModel>,
     fileValid: false,
+    isExperiment: false,
+    distributionLogic: "round_robin",
   });
 
   async function loadFileAndConvertToJson(data: File): Promise<object> {
@@ -42,6 +44,8 @@ export function useCreateJob() {
       name: attribute.name,
       imageURL: attribute.imageURL,
       taskAttributes: attribute.fileData,
+      isExperiment: attribute.isExperiment,
+      distributionLogic: attribute.distributionLogic,
     });
 
     router.replace({
@@ -66,9 +70,18 @@ export function useCreateJob() {
     attribute.fileValid = true;
   }
 
+  async function onDistributionLogicUpdate() {
+    if (attribute.distributionLogic === "round_robin") {
+      attribute.isExperiment = false;
+    } else {
+      attribute.isExperiment = true;
+    }
+  }
+
   return {
     attribute,
     onClickSubmit,
     onFileUpdate,
+    onDistributionLogicUpdate,
   };
 }
