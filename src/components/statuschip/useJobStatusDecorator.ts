@@ -36,9 +36,15 @@ export function useJobStatusDecorator() {
           color: "blue",
           icon: "mdi-file-tree",
         };
-      case JobStatus.Done:
+      case JobStatus.Failed:
         return {
-          title: translation("status.jobStatus.done"),
+          title: "Failed",
+          color: "red",
+          icon: "mdi-alert-circle",
+        };
+      case JobStatus.Success:
+        return {
+          title: "Success",
           color: "green",
           icon: "mdi-check-circle",
         };

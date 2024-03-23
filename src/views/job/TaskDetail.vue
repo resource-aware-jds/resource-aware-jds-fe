@@ -37,7 +37,7 @@
       <v-card-item>
         <v-card-title> Task Distribution Log </v-card-title>
       </v-card-item>
-      <v-table fixed-header height="750px">
+      <v-table fixed-header height="400px">
         <thead>
           <tr>
             <th class="text-left">Severity</th>

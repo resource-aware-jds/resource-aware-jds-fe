@@ -2,8 +2,9 @@ export enum JobStatus {
   Created = "created",
   Experimenting = "experimenting",
   Distributing = "distributing",
-  Done = "done",
   Unknown = "unknown",
+  Success = "success",
+  Failed = "failed",
 }
 
 export interface Job {
