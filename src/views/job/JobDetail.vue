@@ -14,6 +14,18 @@
             :status="attribute.data.status"
             :decorator-composable="useJobStatusDecorator"
           ></StatusChip>
+        <v-spacer></v-spacer>
+        <v-switch v-model:model-value="attribute.isAutoReload" v-on:update:model-value="toggleAutoReload">        
+          <template v-slot:label>
+            Auto Reloading every 3s
+            <v-progress-circular
+              v-if="attribute.isLoading"
+              :indeterminate="true"
+              class="ms-2"
+              size="24"
+            ></v-progress-circular>
+          </template>
+        </v-switch>
         </v-card-subtitle>
       </v-card-item>
     </v-card>
@@ -52,7 +64,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onUnmounted } from "vue";
 import StatusChip from "@/components/statuschip/StatusChip.vue";
 import { useJobStatusDecorator } from "@/components/statuschip/useJobStatusDecorator";
 import { useTaskStatusDecorator } from "@/components/statuschip/useTaskStatusDecorator";
@@ -68,7 +80,7 @@ export default defineComponent({
   setup() {
     const route = useRoute();
 
-    const { attribute } = useGetJobDetail(route.params.jobID as string);
+    const { attribute, toggleAutoReload, clearAutoReload } = useGetJobDetail(route.params.jobID as string);
 
     function onClickEachRow(taskID: string) {
       router.push({
@@ -80,11 +92,16 @@ export default defineComponent({
       });
     }
 
+    onUnmounted(() => {
+      clearAutoReload()
+    })
+
     return {
       attribute,
       useJobStatusDecorator,
       useTaskStatusDecorator,
       onClickEachRow,
+      toggleAutoReload,
     };
   },
 });
