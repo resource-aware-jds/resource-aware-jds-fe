@@ -20,34 +20,32 @@ export function useGetTaskDetail(taskID: string) {
   }
 
   function clearAutoReload() {
-    attribute.isAutoReload = false
+    attribute.isAutoReload = false;
   }
 
   async function autoReload() {
     if (!attribute.isAutoReload) {
-      return
+      return;
     }
 
     await getTaskDetail();
 
     return new Promise<void>((resolve, reject) => {
-      setTimeout(
-      () => {
+      setTimeout(() => {
         autoReload();
         resolve();
-      }
-      , 3000);
-    })
+      }, 3000);
+    });
   }
 
   function toggleAutoReload() {
     if (attribute.isAutoReload) {
-      autoReload()
+      autoReload();
     }
   }
 
   getTaskDetail();
-  toggleAutoReload()
+  toggleAutoReload();
 
   return {
     attribute,

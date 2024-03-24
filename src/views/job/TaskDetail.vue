@@ -30,7 +30,10 @@
           >
           </v-textarea>
 
-          <v-switch v-model:model-value="attribute.isAutoReload" v-on:update:model-value="toggleAutoReload">        
+          <v-switch
+            v-model:model-value="attribute.isAutoReload"
+            v-on:update:model-value="toggleAutoReload"
+          >
             <template v-slot:label>
               Auto Reloading every 3s
               <v-progress-circular
@@ -124,18 +127,19 @@ export default defineComponent({
   },
   setup() {
     const route = useRoute();
-    const { attribute, toggleAutoReload, clearAutoReload } = useGetTaskDetail(route.params.taskID as string);
+    const { attribute, toggleAutoReload, clearAutoReload } = useGetTaskDetail(
+      route.params.taskID as string
+    );
 
     onUnmounted(() => {
-      clearAutoReload()
-    })
-
+      clearAutoReload();
+    });
 
     return {
       attribute,
       useJobStatusDecorator,
       useTaskStatusDecorator,
-      toggleAutoReload
+      toggleAutoReload,
     };
   },
 });

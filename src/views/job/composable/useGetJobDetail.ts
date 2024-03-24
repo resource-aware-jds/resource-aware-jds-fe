@@ -20,33 +20,31 @@ export function useGetJobDetail(jobID: string) {
 
   async function autoReload() {
     if (!attribute.isAutoReload) {
-      return
+      return;
     }
 
     await getJobDetail();
 
     return new Promise<void>((resolve, reject) => {
-      setTimeout(
-      () => {
+      setTimeout(() => {
         autoReload();
         resolve();
-      }
-      , 3000);
-    })
+      }, 3000);
+    });
   }
 
   function clearAutoReload() {
-    attribute.isAutoReload = false
+    attribute.isAutoReload = false;
   }
 
   function toggleAutoReload() {
     if (attribute.isAutoReload) {
-      autoReload()
+      autoReload();
     }
   }
 
   getJobDetail();
-  toggleAutoReload()
+  toggleAutoReload();
 
   return {
     attribute,
