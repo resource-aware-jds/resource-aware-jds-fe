@@ -3,7 +3,7 @@ import moment from "moment-timezone";
 
 class TimeConfigProvider {
   private static _instance: TimeConfigProvider;
-  private static defaultTimeformat = "DD/MM/yy hh:MMa (Z)";
+  private static defaultTimeformat = "DD/MM/yy hh:mm:ss (Z)";
   private _tz: string;
   private _timeFormat: string;
 
